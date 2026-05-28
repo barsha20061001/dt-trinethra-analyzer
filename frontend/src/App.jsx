@@ -57,6 +57,22 @@ setResult(cleanOutput);
           marginTop: "20px",
         }}
       />
+         
+         <button
+  onClick={() =>
+    setTranscript(
+      "The intern showed empathy and listened carefully but missed deeper emotional cues."
+    )
+  }
+  style={{
+    marginTop: "20px",
+    marginRight: "10px",
+    padding: "10px 20px",
+    cursor: "pointer",
+  }}
+>
+  Load Sample
+</button>
 
       <button
         onClick={analyzeTranscript}
@@ -70,16 +86,20 @@ setResult(cleanOutput);
       </button>
 
       <div
-        style={{
-          marginTop: "30px",
-          whiteSpace: "pre-wrap",
-          background: "#f4f4f4",
-          padding: "20px",
-          borderRadius: "10px",
-        }}
-      
-        > {result}
-      </div> 
+  style={{
+    marginTop: "30px",
+    whiteSpace: "pre-wrap",
+    background: "#f4f4f4",
+    padding: "20px",
+    borderRadius: "10px",
+    color: "#111",
+    textAlign: "left",
+  }}
+>
+  <h2>AI Analysis Output</h2>
+
+  <pre>{result}</pre>
+</div>
     </div>
   );
 }
