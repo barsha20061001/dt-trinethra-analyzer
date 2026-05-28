@@ -1,6 +1,6 @@
 # DT Trinethra Analyzer
 
-This project is being built for the DT CultureTech Software Developer recruitment assignment.
+
 
 ## Goal
 
