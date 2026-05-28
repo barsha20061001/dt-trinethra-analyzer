@@ -18,7 +18,15 @@ function App() {
         }
       );
 
-      setResult(response.data.output);
+      let cleanOutput = response.data.output;
+
+try {
+  cleanOutput = JSON.stringify(JSON.parse(response.data.output), null, 2);
+} catch (error) {
+  cleanOutput = response.data.output;
+}
+
+setResult(cleanOutput);
     } catch (error) {
       console.log(error);
       alert("Error analyzing transcript");
