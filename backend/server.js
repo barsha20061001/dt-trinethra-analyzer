@@ -17,19 +17,23 @@ app.post("/api/analyze", async (req, res) => {
     const { transcript } = req.body;
 
     const prompt = `
-You are a psychology supervision analysis assistant.
+You are Trinethra, an AI assistant helping psychology interns review supervisor feedback.
 
-Analyze this transcript and return:
+Analyze the transcript carefully.
 
-1. Strengths
-2. Concerns
-3. Score out of 10
-4. Suggested follow-up questions
+Return ONLY valid JSON in this exact format:
+
+{
+  "strengths": ["point 1", "point 2"],
+  "concerns": ["point 1", "point 2"],
+  "score": 0,
+  "kpiMapping": ["point 1", "point 2"],
+  "gaps": ["point 1", "point 2"],
+  "followUpQuestions": ["question 1", "question 2"]
+}
 
 Transcript:
 ${transcript}
-
-Return clean JSON only.
 `;
 
     const response = await axios.post(
