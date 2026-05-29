@@ -182,7 +182,19 @@ User →  React Frontend →  Express API →  Prompt Engine →  Ollama (llama3
 
 ---
 
+## AI Hallucination Guardrails
 
+To reduce AI hallucinations and improve consistency, several guardrails were implemented:
+
+- Analysis is grounded using the provided context.md domain knowledge.
+- Scoring follows the rubric definitions from rubric.json.
+- The model is instructed to extract evidence directly from transcript content.
+- Responses must follow a predefined JSON schema.
+- Missing information is reported through gap analysis instead of making assumptions.
+- Sample transcripts were used to validate scoring behavior against expected ranges.
+- Frontend validation ensures malformed responses do not crash the application.
+
+---
 
 ## Challenges and Design Decisions
 
