@@ -33,10 +33,16 @@ The project is fully local and does not use cloud AI APIs.
 * Express
 * Axios
 
-### AI
+## Model Selection
 
-* Ollama
-* llama3.2
+Model Used: llama3.2
+
+Reason:
+- Runs efficiently on local machines
+- Produces structured JSON reliably
+- Fast inference speed
+- No external API dependency
+- Suitable for transcript analysis tasks
 
 ---
 
@@ -141,33 +147,59 @@ Request:
 
 ---
 
-## Design Decisions
+## Architecture Overview
 
-### 1. Local AI Usage
+User Transcript
+       ↓
+React Frontend (Vite)
+       ↓
+POST /api/analyze
+       ↓
+Express Backend
+       ↓
+Prompt Construction
+(Context + Rubric + Domain Rules)
+       ↓
+Ollama (llama3.2)
+       ↓
+Structured JSON Response
+       ↓
+Frontend Analysis Dashboard
 
-The project uses Ollama and llama3.2 locally to ensure:
+---
 
-* privacy
-* offline functionality
-* low-cost inference
 
-### 2. Structured Prompt Engineering
 
-The AI prompt was designed to enforce structured JSON responses for easier frontend rendering and evaluation consistency.
+## Challenges and Design Decisions
 
-### 3. Safe JSON Formatting
+### Challenge 1: Single Prompt vs Multi-Step Analysis
 
-Fallback handling was added to prevent frontend crashes when AI output formatting is inconsistent.
+A key challenge was deciding whether to break analysis into multiple AI calls or use a single prompt.
+
+I chose a single prompt because it reduces latency, keeps all transcript context together, and produces more consistent scoring across KPI mapping, evidence extraction, gap analysis, and follow-up question generation.
+
+### Challenge 2: Reliable Structured Output
+
+LLMs sometimes return invalid JSON or inconsistent formatting.
+
+To address this, the prompt strictly enforces a predefined JSON schema and the frontend includes safe parsing and fallback handling to prevent crashes.
+
+### Challenge 3: Domain-Aware Scoring
+
+The assignment requires understanding the distinction between Layer 1 (execution) and Layer 2 (systems building).
+
+The prompt was enhanced using the provided context.md so the model evaluates ownership, systems thinking, supervisor bias, KPI relevance, and gap dimensions rather than assigning generic scores.
 
 ---
 
 ## Future Improvements
 
-* Better UI design with Tailwind CSS
-* Export analysis as PDF
-* Authentication system
-* Transcript history storage
-* Real-time streaming responses
+- Highlight extracted evidence directly inside transcripts
+- Confidence score for each assessment
+- Export analysis reports as PDF
+- Comparison across multiple supervisor reviews
+- Dashboard for tracking fellow progress over time
+- Visual KPI performance charts
 
 ---
 
