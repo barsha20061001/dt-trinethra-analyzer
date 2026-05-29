@@ -98,7 +98,62 @@ setResult(cleanOutput);
 >
   <h2>AI Analysis Output</h2>
 
-  <pre>{result}</pre>
+{result && (() => {
+  try {
+    const data = JSON.parse(result);
+
+    return (
+      <div>
+        <h3>📊 Rubric Score</h3>
+        <p>
+          <strong>{data.rubricScore?.score}/10</strong>
+        </p>
+        <p>{data.rubricScore?.justification}</p>
+
+        <h3>📌 Extracted Evidence</h3>
+        <ul>
+          {data.extractedEvidence?.map((item, index) => (
+            <li key={index}>
+              <strong>{item.tag}</strong>: "{item.quote}"
+              <br />
+              {item.reason}
+            </li>
+          ))}
+        </ul>
+
+        <h3>🎯 KPI Mapping</h3>
+        <ul>
+          {data.kpiMapping?.map((item, index) => (
+            <li key={index}>
+              <strong>{item.kpi}</strong> - {item.reason}
+            </li>
+          ))}
+        </ul>
+
+        <h3>⚠️ Gap Analysis</h3>
+        <ul>
+          {data.gapAnalysis?.length > 0 ? (
+  data.gapAnalysis.map((item, index) => (
+    <li key={index}>{item}</li>
+  ))
+) : (
+  <p>No major gaps detected in this transcript.</p>
+)}
+        </ul>
+
+        <h3>❓ Follow-up Questions</h3>
+        <ul>
+          {data.followUpQuestions?.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+      </div>
+    );
+  } catch {
+    return <pre>{result}</pre>;
+  }
+})()}
+
 </div>
     </div>
   );

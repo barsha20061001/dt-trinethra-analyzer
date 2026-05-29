@@ -19,18 +19,44 @@ app.post("/api/analyze", async (req, res) => {
     const prompt = `
 You are Trinethra, an AI assistant helping psychology interns review supervisor feedback.
 
-Analyze the transcript carefully.
+Analyze the supervisor transcript and return ONLY valid JSON.
 
-Return ONLY valid JSON in this exact format:
+Required JSON format:
 
 {
-  "strengths": ["point 1", "point 2"],
-  "concerns": ["point 1", "point 2"],
-  "score": 0,
-  "kpiMapping": ["point 1", "point 2"],
-  "gaps": ["point 1", "point 2"],
-  "followUpQuestions": ["question 1", "question 2"]
+  "extractedEvidence": [
+    {
+      "quote": "specific quote from transcript",
+      "tag": "positive/negative/neutral",
+      "reason": "why this quote matters"
+    }
+  ],
+  "rubricScore": {
+    "score": 1,
+    "justification": "one paragraph explaining the score using extracted evidence"
+  },
+  "kpiMapping": [
+    {
+      "kpi": "KPI name",
+      "reason": "how the transcript connects to this KPI"
+    }
+  ],
+  "gapAnalysis": [
+    "important missing information from the transcript"
+  ],
+  "followUpQuestions": [
+    "question 1",
+    "question 2",
+    "question 3"
+  ]
 }
+
+Rules:
+- Score must be between 1 and 10.
+- Do not return score as 0.
+- Use specific transcript evidence.
+- If information is missing, mention it in gapAnalysis.
+- Return JSON only. No extra explanation.
 
 Transcript:
 ${transcript}
