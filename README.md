@@ -82,7 +82,7 @@ dt-trinethra-analyzer/
 ### 1. Clone Repository
 
 ```bash
-git clone <repo-link>
+git clone <https://github.com/barsha20061001/dt-trinethra-analyzer>
 ```
 
 ---
