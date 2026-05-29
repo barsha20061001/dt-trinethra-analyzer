@@ -1,6 +1,6 @@
 # DT Trinethra Analyzer
 
-A local AI-powered transcript analysis tool built for the DT CultureTech Software Developer Recruitment Assignment.
+DT Trinethra Analyzer is an AI-powered application that evaluates supervisor feedback transcripts and generates structured performance insights for fellows. The system extracts evidence, maps observations to KPIs, identifies performance gaps, and produces follow-up questions using a locally running LLM. It is designed to support consistent, transparent, and domain-aware evaluation of workplace performance reviews.
 
 ## Overview
 
