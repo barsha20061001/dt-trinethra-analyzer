@@ -59,18 +59,29 @@ Reason:
 
 ## Project Structure
 
-```txt
 dt-trinethra-analyzer/
 │
 ├── backend/
+│   ├── data/
+│   │   ├── context.md
+│   │   ├── rubric.json
+│   │   └── sample-transcripts.json
+│   │
 │   ├── server.js
 │   ├── prompt.js
-│   └── package.json
+│   ├── package.json
+│   └── .env
 │
 ├── frontend/
-│   ├── src/
 │   ├── public/
-│   └── package.json
+│   ├── src/
+│   │   ├── App.jsx
+│   │   ├── App.css
+│   │   ├── index.css
+│   │   └── main.jsx
+│   │
+│   ├── package.json
+│   └── vite.config.js
 │
 └── README.md
 ```
@@ -82,7 +93,7 @@ dt-trinethra-analyzer/
 ### 1. Clone Repository
 
 ```bash
-git clone <https://github.com/barsha20061001/dt-trinethra-analyzer>
+git clone  https://github.com/barsha20061001/dt-trinethra-analyzer
 ```
 
 ---
@@ -149,22 +160,18 @@ Request:
 
 ## Architecture Overview
 
-User Transcript
-       ↓
-React Frontend (Vite)
-       ↓
-POST /api/analyze
-       ↓
-Express Backend
-       ↓
-Prompt Construction
-(Context + Rubric + Domain Rules)
-       ↓
-Ollama (llama3.2)
-       ↓
-Structured JSON Response
-       ↓
-Frontend Analysis Dashboard
+The application follows a simple client-server architecture.
+
+1. User enters a supervisor feedback transcript in the React frontend.
+2. The frontend sends the transcript to the Express backend through the `/api/analyze` endpoint.
+3. The backend combines domain context, rubric guidelines, and transcript data into a structured prompt.
+4. Ollama (llama3.2) processes the prompt locally and generates analysis results.
+5. The backend validates and returns structured JSON.
+6. The frontend renders the analysis as evidence, KPI mapping, gap analysis, follow-up questions, and a final rubric score.
+
+Flow:
+
+User →  React Frontend →  Express API →  Prompt Engine →  Ollama (llama3.2) →  JSON Output →  Analysis Dashboard
 
 ---
 
