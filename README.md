@@ -65,6 +65,12 @@ Reason:
 
 ### 2. Analysis Output
 
+<img width="1412" height="936" alt="analysis-output" src="https://github.com/user-attachments/assets/03323270-a1ce-4193-8198-51ca8803951c" />
+
+<img width="1382" height="912" alt="analysis-output1" src="https://github.com/user-attachments/assets/62bc13a0-753a-45c2-a0d5-2a1f40bc7e86" />
+
+<img width="1381" height="917" alt="analysis-output2" src="https://github.com/user-attachments/assets/271628ef-11b5-4158-b589-028520a7aedf" />
+
 
 ## Project Structure
 
