@@ -59,9 +59,13 @@ Reason:
 
 ## Project Structure
 
+## Project Structure
+
+```text
 dt-trinethra-analyzer/
 │
 ├── backend/
+│   │
 │   ├── data/
 │   │   ├── context.md
 │   │   ├── rubric.json
@@ -73,7 +77,9 @@ dt-trinethra-analyzer/
 │   └── .env
 │
 ├── frontend/
+│   │
 │   ├── public/
+│   │
 │   ├── src/
 │   │   ├── App.jsx
 │   │   ├── App.css
@@ -84,6 +90,7 @@ dt-trinethra-analyzer/
 │   └── vite.config.js
 │
 └── README.md
+```
 ```
 
 ---
