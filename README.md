@@ -57,6 +57,13 @@ Reason:
 
 ---
 
+## Screenshots 
+
+### 1. Input Interface
+
+<img width="1387" height="901" alt="input-interface" src="https://github.com/user-attachments/assets/26de1635-7e59-4874-a7f8-a07b6afc7834" />
+
+### 2. Analysis Output
 
 
 ## Project Structure
